@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.002.001.02" xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:pain.002.001.02 schema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <pain.002.001.02>
+        <GrpHdr>
+            <MsgId>string</MsgId>
+            <CreDtTm>1992-06-28T08:45:22.42</CreDtTm>
+        </GrpHdr>
+        <OrgnlGrpInfAndSts>
+            <NtwkFileNm>string</NtwkFileNm>
+            <OrgnlMsgNmId>string</OrgnlMsgNmId>
+        </OrgnlGrpInfAndSts>
+        <TxInfAndSts />
+        <TxInfAndSts />
+        <TxInfAndSts />
+        <TxInfAndSts />
+    </pain.002.001.02>
+</Document>
