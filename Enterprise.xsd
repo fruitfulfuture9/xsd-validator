@@ -1,0 +1,177 @@
+<xsd:schema xmlns="http://www.cybersource.com/v1/schema/enterprise" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:merchant="http://www.cybersource.com/v1/schema/merchant"
+            targetNamespace="http://www.cybersource.com/v1/schema/enterprise"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:import namespace="http://www.cybersource.com/v1/schema/merchant"
+                schemaLocation="MerchantCommonServiceType.xsd"/>
+    <xsd:element name="EnterpriseMerchant" type="merchant:merchantType"/>
+    <xsd:complexType name="billingInformationType">
+        <xsd:annotation>
+            <xsd:documentation>
+                Billing information.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="setupComplexity">
+                <xsd:simpleType>
+                    <xsd:annotation>
+                        <xsd:documentation>Setup complexity
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="BASIC"/>
+                        <xsd:enumeration value="MEDIUM"/>
+                        <xsd:enumeration value="COMPLEX"/>
+                        <xsd:enumeration value="GPG"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="multiCurrencyValue">
+                <xsd:simpleType>
+                    <xsd:annotation>
+                        <xsd:documentation>Multi-Currency Value
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:restriction base="xsd:integer">
+                        <xsd:enumeration value="1"/>
+                        <xsd:enumeration value="2"/>
+                        <xsd:enumeration value="3"/>
+                        <xsd:enumeration value="4"/>
+                        <xsd:enumeration value="5"/>
+                        <xsd:enumeration value="6"/>
+                        <xsd:enumeration value="7"/>
+                        <xsd:enumeration value="8"/>
+                        <xsd:enumeration value="9"/>
+                        <xsd:enumeration value="10"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="bankAccountNumber">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:pattern value="[a-zA-Z0-9]{1,12}"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="bankId" type="extBankIdType" minOccurs="0"/>
+            <xsd:element name="productType">
+                <xsd:simpleType>
+                    <xsd:annotation>
+                        <xsd:documentation>Product Type
+                        </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="DDA"/>
+                        <xsd:enumeration value="XDA"/>
+                        <xsd:enumeration value="GTA"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="relationshipType">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:pattern value=".{1,56}"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="enterpriseMerchantType">
+        <xsd:complexContent>
+            <xsd:extension base="merchant:merchantType">
+                <xsd:sequence>
+                    <xsd:element name="enterpriseMultipleMerchants" type="EnterpriseMultipleMerchants" minOccurs="0"/>
+                    <xsd:element name="billingInformation" type="billingInformationType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Billing information
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="EnterpriseMultipleMerchants">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[The top level (typically root) element. Allows the definition
+                of creating the Root Merchant and also allow for mutiple merchants creation.]]></xsd:documentation>
+        </xsd:annotation>
+            <xsd:sequence>
+                <xsd:element name="boardMerchant" type="enterpriseMerchantType" maxOccurs="999"/>
+                <xsd:element name="updateMerchant" type="enterpriseMerchantType" minOccurs="0"
+                             maxOccurs="999"/>
+            </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="bankIdType">
+        <xsd:annotation>
+            <xsd:documentation>A list of allowed values for bank id
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="001"/>
+            <xsd:enumeration value="003"/>
+            <xsd:enumeration value="038"/>
+            <xsd:enumeration value="052"/>
+            <xsd:enumeration value="072"/>
+            <xsd:enumeration value="082"/>
+            <xsd:enumeration value="083"/>
+            <xsd:enumeration value="113"/>
+            <xsd:enumeration value="114"/>
+            <xsd:enumeration value="115"/>
+            <xsd:enumeration value="119"/>
+            <xsd:enumeration value="120"/>
+            <xsd:enumeration value="155"/>
+            <xsd:enumeration value="163"/>
+            <xsd:enumeration value="164"/>
+            <xsd:enumeration value="165"/>
+            <xsd:enumeration value="166"/>
+            <xsd:enumeration value="167"/>
+            <xsd:enumeration value="182"/>
+            <xsd:enumeration value="203"/>
+            <xsd:enumeration value="207"/>
+            <xsd:enumeration value="220"/>
+            <xsd:enumeration value="221"/>
+            <xsd:enumeration value="222"/>
+            <xsd:enumeration value="259"/>
+            <xsd:enumeration value="287"/>
+            <xsd:enumeration value="297"/>
+            <xsd:enumeration value="300"/>
+            <xsd:enumeration value="336"/>
+            <xsd:enumeration value="337"/>
+            <xsd:enumeration value="338"/>
+            <xsd:enumeration value="345"/>
+            <xsd:enumeration value="347"/>
+            <xsd:enumeration value="348"/>
+            <xsd:enumeration value="367"/>
+            <xsd:enumeration value="373"/>
+            <xsd:enumeration value="377"/>
+            <xsd:enumeration value="389"/>
+            <xsd:enumeration value="433"/>
+            <xsd:enumeration value="437"/>
+            <xsd:enumeration value="464"/>
+            <xsd:enumeration value="552"/>
+            <xsd:enumeration value="553"/>
+            <xsd:enumeration value="569"/>
+            <xsd:enumeration value="585"/>
+            <xsd:enumeration value="727"/>
+            <xsd:enumeration value="737"/>
+            <xsd:enumeration value="746"/>
+            <xsd:enumeration value="808"/>
+            <xsd:enumeration value="810"/>
+            <xsd:enumeration value="825"/>
+            <xsd:enumeration value="845"/>
+            <xsd:enumeration value="303"/>
+            <xsd:enumeration value="312"/>
+            <xsd:enumeration value="315"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="extBankIdType">
+        <xsd:union memberTypes="bankIdType xsd:string"/>
+    </xsd:simpleType>
+
+</xsd:schema>
